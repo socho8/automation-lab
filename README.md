@@ -5,7 +5,7 @@ A collection of Python automation projects, from beginner-friendly tools to AI-p
 ## Roadmap
 
 - ⏳ 01 - Duplicate Finder
-- ⏳ 02 - 
+- ⏳ 02 - File Organizer
 - ⏳ 03 - 
 - ⏳ 04 - 
 - ⏳ 05 - 

@@ -53,6 +53,9 @@ python app.py /ruta/a/tu/carpeta --delete
 
 💾 Espacio recuperable si se eliminan los duplicados: 4.60 MB
 ```
+## 🎥 Demo
+
+Ver demostración: demo\AUTOMATION LAB 1.mp4
 
 ## ⚠️ Nota de seguridad
 

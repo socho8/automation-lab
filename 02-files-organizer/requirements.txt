@@ -1,0 +1,2 @@
+# Este proyecto no tiene dependencias externas.
+# Usa únicamente librería estándar de Python (tkinter, pathlib, shutil).
