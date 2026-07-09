@@ -128,7 +128,7 @@ def run_conversion(file_bytes: bytes, source_ext: str, target_label: str) -> tup
 # ── Interfaz ───────────────────────────────────────────────────────────
 
 st.title("🔄 Universal File Converter")
-st.caption("Parte de Automation Lab — convertí archivos sin instalar nada.")
+st.caption("Automation Lab #3 — Convertí archivos sin instalar nada.")
 
 uploaded_file = st.file_uploader(
     "Arrastrá un archivo o hacé clic para elegirlo",
@@ -175,4 +175,5 @@ else:
     st.info("Subí un archivo PNG, JPG, CSV, XLSX o DOCX para empezar.")
 
 st.divider()
-st.caption("🚀 Automation Lab — Project #4")
+st.caption("🚀 Automation Lab — Project #3")
+st.caption("github.com/socho8/automation-lab")
