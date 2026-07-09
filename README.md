@@ -4,15 +4,15 @@ A collection of Python automation projects, from beginner-friendly tools to AI-p
 
 ## Roadmap
 
-- ⏳ 01 - Duplicate Finder
-- ⏳ 02 - File Organizer
-- ⏳ 03 - 
-- ⏳ 04 - 
-- ⏳ 05 - 
-- ⏳ 06 - 
-- ⏳ 07 - 
-- ⏳ 08 - 
-- ⏳ 09 - 
-- ⏳ 10 - 
+- ✅ 01 - Duplicate Finder
+- ✅ 02 - File Organizer
+- ✅ 03 - Coming soon
+- ⏳ 04 - Coming soon
+- ⏳ 05 - Coming soon
+- ⏳ 06 - Coming soon
+- ⏳ 07 - Coming soon
+- ⏳ 08 - Coming soon
+- ⏳ 09 - Coming soon
+- ⏳ 10 - Coming soon
 ...
 More projects coming soon...
