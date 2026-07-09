@@ -14,6 +14,7 @@ Requiere además LibreOffice instalado en el sistema (para DOCX -> PDF).
 """
 
 import io
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -37,6 +38,13 @@ def convert_image(file_bytes: bytes, target_format: str) -> bytes:
     image.save(output, format=target_format.upper())
     return output.getvalue()
 
+def format_size(num_bytes: int) -> str:
+    """Convierte bytes a un formato legible."""
+    for unit in ("B", "KB", "MB", "GB"):
+        if num_bytes < 1024:
+            return f"{num_bytes:.2f} {unit}"
+        num_bytes /= 1024
+    return f"{num_bytes:.2f} TB"
 
 def csv_to_excel(file_bytes: bytes) -> bytes:
     """Convierte CSV a Excel (.xlsx)."""
@@ -56,29 +64,58 @@ def excel_to_csv(file_bytes: bytes) -> bytes:
 
 def docx_to_pdf(file_bytes: bytes) -> bytes:
     """
-    Convierte DOCX a PDF usando LibreOffice en modo headless.
-    Requiere que LibreOffice esté instalado en el sistema (comando `soffice`).
+    Convierte un archivo DOCX a PDF utilizando LibreOffice.
+
+    Si LibreOffice no está instalado, informa al usuario de forma clara.
     """
+
+    soffice = shutil.which("soffice")
+
+    if soffice is None:
+        possible_paths = [
+            r"C:\Program Files\LibreOffice\program\soffice.exe",
+            r"C:\Program Files (x86)\LibreOffice\program\soffice.exe",
+        ]
+
+        for path in possible_paths:
+            if Path(path).exists():
+                soffice = path
+                break
+
+    if soffice is None:
+        raise RuntimeError(
+            "LibreOffice no está instalado.\n\n"
+            "Instálalo desde https://www.libreoffice.org para habilitar la conversión DOCX → PDF."
+        )
+
     with tempfile.TemporaryDirectory() as tmpdir:
-        tmp_docx = Path(tmpdir) / "input.docx"
-        tmp_docx.write_bytes(file_bytes)
+
+        input_docx = Path(tmpdir) / "input.docx"
+        input_docx.write_bytes(file_bytes)
 
         result = subprocess.run(
-            ["soffice", "--headless", "--convert-to", "pdf",
-             "--outdir", tmpdir, str(tmp_docx)],
+            [
+                soffice,
+                "--headless",
+                "--convert-to",
+                "pdf",
+                "--outdir",
+                tmpdir,
+                str(input_docx),
+            ],
             capture_output=True,
+            text=True,
             timeout=60,
         )
 
-        tmp_pdf = Path(tmpdir) / "input.pdf"
-        if not tmp_pdf.exists():
-            error_msg = result.stderr.decode(errors="ignore")
+        output_pdf = Path(tmpdir) / "input.pdf"
+
+        if not output_pdf.exists():
             raise RuntimeError(
-                "No se pudo convertir el archivo. "
-                "Verificá que LibreOffice esté instalado. "
-                f"Detalle: {error_msg}"
+                result.stderr if result.stderr else "No se pudo convertir el archivo."
             )
-        return tmp_pdf.read_bytes()
+
+        return output_pdf.read_bytes()
 
 
 # ── Configuración de conversiones disponibles ─────────────────────────
@@ -97,21 +134,20 @@ def get_file_extension(filename: str) -> str:
     return filename.rsplit(".", 1)[-1].lower()
 
 
-def run_conversion(file_bytes: bytes, source_ext: str, target_label: str) -> tuple[bytes, str, str]:
-    """
-    Ejecuta la conversión correspondiente.
-    Devuelve (bytes_resultado, nombre_archivo_salida, mime_type).
-    """
+def run_conversion(file_bytes: bytes, source_ext: str, target_label: str):
     if source_ext in ("png", "jpg", "jpeg") and target_label in ("PNG", "JPG"):
         target_format = "PNG" if target_label == "PNG" else "JPEG"
         result = convert_image(file_bytes, target_format)
         ext_out = "png" if target_format == "PNG" else "jpg"
+
         return result, f"convertido.{ext_out}", f"image/{ext_out}"
 
     if source_ext == "csv" and target_label == "Excel (.xlsx)":
         result = csv_to_excel(file_bytes)
-        return result, "convertido.xlsx", (
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        return (
+            result,
+            "convertido.xlsx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
 
     if source_ext == "xlsx" and target_label == "CSV":
@@ -124,11 +160,18 @@ def run_conversion(file_bytes: bytes, source_ext: str, target_label: str) -> tup
 
     raise ValueError("Conversión no soportada.")
 
-
 # ── Interfaz ───────────────────────────────────────────────────────────
 
-st.title("🔄 Universal File Converter")
-st.caption("Automation Lab #3 — Convertí archivos sin instalar nada.")
+st.title("📂 Universal File Converter")
+st.caption("Automation Lab #3 — Convertí imágenes y documentos desde tu navegador.")
+with st.sidebar:
+    st.header("📦 Conversiones")
+
+    st.write("🖼 PNG → JPG")
+    st.write("🖼 JPG → PNG")
+    st.write("📄 CSV → Excel")
+    st.write("📄 Excel → CSV")
+    st.write("📄 DOCX → PDF")
 
 uploaded_file = st.file_uploader(
     "Arrastrá un archivo o hacé clic para elegirlo",
@@ -142,6 +185,11 @@ if uploaded_file is not None:
     st.write(f"**Archivo:** {uploaded_file.name} ({source_ext.upper()})")
 
     available_targets = CONVERSIONS.get(source_ext, [])
+    
+    if source_ext == "docx":
+        st.info(
+            "ℹ️ La conversión DOCX → PDF requiere LibreOffice instalado."
+        )
 
     if not available_targets:
         st.error(f"No hay conversiones disponibles para archivos .{source_ext}")
@@ -163,17 +211,51 @@ if uploaded_file is not None:
                 )
 
                 if source_ext in ("png", "jpg", "jpeg") and target in ("PNG", "JPG"):
-                    st.image(result_bytes, caption="Vista previa del resultado")
+
+                    original_size = len(file_bytes)
+                    converted_size = len(result_bytes)
+
+                    difference = original_size - converted_size
+
+                    percentage = (difference / original_size) * 100 if original_size else 0
+
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        st.metric("📁 Archivo original", format_size(original_size))
+
+                    with col2:
+                        st.metric("📁 Archivo convertido", format_size(converted_size))
+
+                    if difference > 0:
+                        st.success(
+                            f"📉 Se redujo el tamaño en {percentage:.1f}% "
+                            f"({format_size(difference)} menos)"
+                        )
+                    elif difference < 0:
+                        st.info(
+                            f"📈 El archivo aumentó un {abs(percentage):.1f}% "
+                            f"({format_size(abs(difference))} más)"
+                        )
+                    else:
+                        st.info("El tamaño del archivo no cambió.")
+
+                    st.subheader("🖼 Vista previa")
+
+                    st.image(result_bytes, use_container_width=True)
                 elif target == "Excel (.xlsx)":
                     st.dataframe(pd.read_excel(io.BytesIO(result_bytes)))
                 elif target == "CSV":
                     st.dataframe(pd.read_csv(io.BytesIO(result_bytes)))
 
+            except RuntimeError as e:
+                st.warning(str(e))
+
             except Exception as e:
-                st.error(f"Ocurrió un error al convertir: {e}")
+                st.error(f"Error inesperado: {e}")
 else:
     st.info("Subí un archivo PNG, JPG, CSV, XLSX o DOCX para empezar.")
 
 st.divider()
 st.caption("🚀 Automation Lab — Project #3")
-st.caption("github.com/socho8/automation-lab")
+st.caption("🔗 github.com/socho8/automation-lab")

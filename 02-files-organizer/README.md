@@ -4,11 +4,13 @@ Organiza automáticamente cualquier carpeta clasificando los archivos según su 
 
 En lugar de mover archivos manualmente, la aplicación analiza la carpeta seleccionada, muestra una vista previa de los cambios y solicita confirmación antes de realizar cualquier modificación.
 
+Este proyecto forma parte de **Automation Lab**, una colección de automatizaciones desarrolladas con Python para resolver problemas cotidianos mediante herramientas prácticas y fáciles de usar.
+
 ---
 
 ## 🎥 Demo
 
-Ver demostración: demo\AUTOMATION LAB 1.mp4
+Ver demostración: demo\AUTOMATION LAB 2.mp4
 
 ---
 
