@@ -11,9 +11,4 @@ __pycache__/
 
 # Environment variables
 .env
-
-# macOS
-.DS_Store
-
-# Windows
 Thumbs.db

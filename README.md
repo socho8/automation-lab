@@ -7,7 +7,7 @@ A collection of Python automation projects, from beginner-friendly tools to AI-p
 - ✅ 01 - Duplicate Finder
 - ✅ 02 - File Organizer
 - ✅ 03 - Universal Converter
-- ⏳ 04 - Coming soon
+- ✅ 04 - Smart Flight Finder
 - ⏳ 05 - Coming soon
 - ⏳ 06 - Coming soon
 - ⏳ 07 - Coming soon
