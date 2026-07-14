@@ -1,12 +1,11 @@
 """
-Study Pilot — Automation Lab Project #6
+Study Pilot — Automation Lab Project #4
 ------------------------------------------
 Sube uno o varios PDF y genera: resumen por capítulo, flashcards,
 quiz interactivo, ruta de estudio y cronograma — usando Groq (Llama 3.3 70B).
 
 Requiere: streamlit, pymupdf, groq
 """
-
 import json
 import re
 
@@ -171,8 +170,50 @@ def generate_schedule(full_text: str, dias_disponibles: int) -> str:
 
 # ── Interfaz ─────────────────────────────────────────────────────────────
 
-st.title("📚 Study Pilot")
-st.caption("Subí tus apuntes, libros o diapositivas y generá tu material de estudio.")
+
+st.markdown("""
+<style>
+
+div[data-testid="stMarkdownContainer"] p{
+    font-size:18px;
+}
+
+label{
+    font-size:18px !important;
+}
+
+button{
+    font-size:18px !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+st.markdown(
+"""
+<h1 style='text-align:center;'>
+📚 Study Pilot
+</h1>
+""",
+unsafe_allow_html=True
+)
+st.markdown(
+"""
+<p style='text-align:center;font-size:20px;'>
+Transformá cualquier PDF en material de estudio con solo un clic.</p>
+""",
+unsafe_allow_html=True
+)
+st.caption("📚 ¿Qué puede hacer Study Pilot? "
+"   ✔ Resumir PDF"\
+
+"  ✔ Crear flashcards"\
+
+"  ✔ Generar preguntas"\
+
+"  ✔ Crear una ruta de estudio"\
+
+"  ✔ Planificar un cronograma."\
+)
 
 uploaded_files = st.file_uploader(
     "Subí uno o varios PDF", type=["pdf"], accept_multiple_files=True
@@ -191,17 +232,17 @@ if uploaded_files:
             for key in ["summary", "flashcards", "quiz", "study_path", "schedule"]:
                 st.session_state.pop(key, None)
 
-    st.success(f"Texto extraído: {len(st.session_state['full_text'])} caracteres, "
-               f"{len(st.session_state['chapters'])} secciones detectadas.")
+    st.success(f"✅ Documento procesado correctamente. Se dividirá en {len(st.session_state['chapters'])} parte(s) para generar el contenido.")
+
 
     tab_resumen, tab_flashcards, tab_quiz, tab_ruta, tab_cronograma = st.tabs(
-        ["📄 Resumen", "🧠 Flashcards", "❓ Quiz", "🗺️ Ruta de estudio", "📅 Cronograma"]
+        ["📄 Resumen", "🧠 Flashcards", "❓ Quiz", "🗺️ Ruta", "📅 Plan de estudio"]
     )
 
     # ── Tab Resumen ──
     with tab_resumen:
-        if st.button("Generar resumen"):
-            with st.spinner("Generando resumen por capítulo..."):
+        if st.button("✨ Generar resumen"):
+            with st.spinner("🤖 Analizando el documento..."):
                 st.session_state["summary"] = generate_summary(st.session_state["chapters"])
 
         if "summary" in st.session_state:
@@ -211,8 +252,8 @@ if uploaded_files:
 
     # ── Tab Flashcards ──
     with tab_flashcards:
-        if st.button("Generar flashcards"):
-            with st.spinner("Generando flashcards..."):
+        if st.button("✨ Generar flashcards"):
+            with st.spinner("🤖 Generando flashcards..."):
                 st.session_state["flashcards"] = generate_flashcards(st.session_state["full_text"])
 
         if "flashcards" in st.session_state:
@@ -236,8 +277,8 @@ if uploaded_files:
 
     # ── Tab Quiz ──
     with tab_quiz:
-        if st.button("Generar quiz"):
-            with st.spinner("Generando preguntas..."):
+        if st.button("✨ Generar quiz"):
+            with st.spinner("🤖 Analizando..."):
                 st.session_state["quiz"] = generate_quiz(st.session_state["full_text"])
                 st.session_state["quiz_respuestas"] = {}
 
@@ -259,8 +300,8 @@ if uploaded_files:
     # ── Tab Ruta de estudio ──
     with tab_ruta:
         tiempo = st.selectbox("Tiempo disponible:", ["30 minutos", "1 hora", "2 horas", "1 día", "1 semana", "2 semanas"])
-        if st.button("Generar ruta de estudio"):
-            with st.spinner("Generando ruta de estudio..."):
+        if st.button("✨ Generar ruta de estudio"):
+            with st.spinner("🤖 Generando ruta de estudio..."):
                 st.session_state["study_path"] = generate_study_path(st.session_state["full_text"], tiempo)
 
         if "study_path" in st.session_state:
@@ -269,8 +310,8 @@ if uploaded_files:
     # ── Tab Cronograma ──
     with tab_cronograma:
         dias = st.slider("¿Cuántos días tenés?", 1, 30, 7)
-        if st.button("Generar cronograma"):
-            with st.spinner("Generando cronograma..."):
+        if st.button("✨ Generar cronograma"):
+            with st.spinner("🤖 Organizando ..."):
                 st.session_state["schedule"] = generate_schedule(st.session_state["full_text"], dias)
 
         if "schedule" in st.session_state:
@@ -280,4 +321,4 @@ else:
     st.info("Subí al menos un PDF para empezar.")
 
 st.divider()
-st.caption("🚀 Automation Lab — Project #6: Study Pilot")
+st.caption("🚀 Automation Lab — Project #4: Study Pilot")
