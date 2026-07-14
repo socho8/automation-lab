@@ -70,4 +70,5 @@ de actuar, y siempre conserva el archivo más antiguo del grupo como "original".
 - Exportar el reporte a CSV/JSON.
 
 ---
+
 📎 Parte de [Automation Lab](../README.md) — 30 días de automatizaciones con Python.
