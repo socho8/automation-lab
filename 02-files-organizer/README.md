@@ -74,4 +74,8 @@ O simplemente doble click en el .exe que se encuentra en dist\OrganizadorArchivo
 
 ---
 
+Si tienes una idea no dudes en contactarme!
+
+---
+
 📎 Parte de Automation Lab.
