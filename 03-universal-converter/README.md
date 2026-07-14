@@ -81,7 +81,7 @@ También aprendí a gestionar archivos en memoria con `BytesIO`, generar descarg
 
 ---
 
-⭐ Si te resulta útil o tienes alguna idea para mejorarlo, cualquier sugerencia es bienvenida.
+⭐ Si te resulta útil o tienes alguna idea para mejorarlo, cualquier sugerencia es bienvenida!
 
 ---
 
