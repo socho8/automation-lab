@@ -8,7 +8,7 @@ A collection of Python automation projects, from beginner-friendly tools to AI-p
 - ✅ 02 - File Organizer
 - ✅ 03 - Universal Converter
 - ✅ 04 - Study Pilot
-- ⏳ 05 - Coming soon
+- ✅ 05 - Fit Pilot
 - ⏳ 06 - Coming soon
 - ⏳ 07 - Coming soon
 - ⏳ 08 - Coming soon
