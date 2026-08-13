@@ -1,0 +1,485 @@
+{
+  "meta": {
+    "source": "WhereNext Cost of Living Index 2026",
+    "url": "https://getwherenext.com/data/cost-of-living-2026",
+    "license": "CC BY 4.0",
+    "note": "Costo de vida RESIDENCIAL por pais (Banco Mundial ICP 2021). Se ajusta con un multiplicador turistico en calculations.py para estimar gasto de viaje, no de residencia."
+  },
+  "paises": {
+    "Egypt": {
+      "country_code": "EG",
+      "region": "Africa",
+      "monthly_estimate_usd": 700
+    },
+    "India": {
+      "country_code": "IN",
+      "region": "Asia",
+      "monthly_estimate_usd": 750
+    },
+    "Sri Lanka": {
+      "country_code": "LK",
+      "region": "Asia",
+      "monthly_estimate_usd": 750
+    },
+    "Myanmar": {
+      "country_code": "MM",
+      "region": "Asia",
+      "monthly_estimate_usd": 750
+    },
+    "Nepal": {
+      "country_code": "NP",
+      "region": "Asia",
+      "monthly_estimate_usd": 800
+    },
+    "Rwanda": {
+      "country_code": "RW",
+      "region": "Africa",
+      "monthly_estimate_usd": 800
+    },
+    "Turkey": {
+      "country_code": "TR",
+      "region": "Other",
+      "monthly_estimate_usd": 850
+    },
+    "Georgia": {
+      "country_code": "GE",
+      "region": "Other",
+      "monthly_estimate_usd": 850
+    },
+    "Vietnam": {
+      "country_code": "VN",
+      "region": "Asia",
+      "monthly_estimate_usd": 900
+    },
+    "Laos": {
+      "country_code": "LA",
+      "region": "Asia",
+      "monthly_estimate_usd": 900
+    },
+    "Moldova": {
+      "country_code": "MD",
+      "region": "Europe",
+      "monthly_estimate_usd": 950
+    },
+    "Bangladesh": {
+      "country_code": "BD",
+      "region": "Asia",
+      "monthly_estimate_usd": 950
+    },
+    "Thailand": {
+      "country_code": "TH",
+      "region": "Asia",
+      "monthly_estimate_usd": 1000
+    },
+    "Colombia": {
+      "country_code": "CO",
+      "region": "Americas",
+      "monthly_estimate_usd": 1000
+    },
+    "Indonesia": {
+      "country_code": "ID",
+      "region": "Asia",
+      "monthly_estimate_usd": 1000
+    },
+    "Malaysia": {
+      "country_code": "MY",
+      "region": "Asia",
+      "monthly_estimate_usd": 1050
+    },
+    "Cambodia": {
+      "country_code": "KH",
+      "region": "Asia",
+      "monthly_estimate_usd": 1050
+    },
+    "Nigeria": {
+      "country_code": "NG",
+      "region": "Africa",
+      "monthly_estimate_usd": 1050
+    },
+    "Dominican Republic": {
+      "country_code": "DO",
+      "region": "Americas",
+      "monthly_estimate_usd": 1100
+    },
+    "Kenya": {
+      "country_code": "KE",
+      "region": "Africa",
+      "monthly_estimate_usd": 1100
+    },
+    "Romania": {
+      "country_code": "RO",
+      "region": "Europe",
+      "monthly_estimate_usd": 1150
+    },
+    "Ghana": {
+      "country_code": "GH",
+      "region": "Africa",
+      "monthly_estimate_usd": 1150
+    },
+    "Argentina": {
+      "country_code": "AR",
+      "region": "Americas",
+      "monthly_estimate_usd": 1150
+    },
+    "Philippines": {
+      "country_code": "PH",
+      "region": "Asia",
+      "monthly_estimate_usd": 1150
+    },
+    "Bulgaria": {
+      "country_code": "BG",
+      "region": "Europe",
+      "monthly_estimate_usd": 1150
+    },
+    "Bosnia and Herzegovina": {
+      "country_code": "BA",
+      "region": "Europe",
+      "monthly_estimate_usd": 1150
+    },
+    "Serbia": {
+      "country_code": "RS",
+      "region": "Europe",
+      "monthly_estimate_usd": 1200
+    },
+    "Montenegro": {
+      "country_code": "ME",
+      "region": "Europe",
+      "monthly_estimate_usd": 1200
+    },
+    "Mauritius": {
+      "country_code": "MU",
+      "region": "Africa",
+      "monthly_estimate_usd": 1200
+    },
+    "Albania": {
+      "country_code": "AL",
+      "region": "Europe",
+      "monthly_estimate_usd": 1250
+    },
+    "Guatemala": {
+      "country_code": "GT",
+      "region": "Americas",
+      "monthly_estimate_usd": 1250
+    },
+    "Poland": {
+      "country_code": "PL",
+      "region": "Europe",
+      "monthly_estimate_usd": 1300
+    },
+    "Brazil": {
+      "country_code": "BR",
+      "region": "Americas",
+      "monthly_estimate_usd": 1300
+    },
+    "Morocco": {
+      "country_code": "MA",
+      "region": "Africa",
+      "monthly_estimate_usd": 1300
+    },
+    "Jordan": {
+      "country_code": "JO",
+      "region": "Middle East",
+      "monthly_estimate_usd": 1300
+    },
+    "Tunisia": {
+      "country_code": "TN",
+      "region": "Africa",
+      "monthly_estimate_usd": 1300
+    },
+    "Ecuador": {
+      "country_code": "EC",
+      "region": "Americas",
+      "monthly_estimate_usd": 1350
+    },
+    "Peru": {
+      "country_code": "PE",
+      "region": "Americas",
+      "monthly_estimate_usd": 1350
+    },
+    "Mexico": {
+      "country_code": "MX",
+      "region": "Americas",
+      "monthly_estimate_usd": 1400
+    },
+    "Mongolia": {
+      "country_code": "MN",
+      "region": "Asia",
+      "monthly_estimate_usd": 1400
+    },
+    "Hungary": {
+      "country_code": "HU",
+      "region": "Europe",
+      "monthly_estimate_usd": 1450
+    },
+    "South Africa": {
+      "country_code": "ZA",
+      "region": "Africa",
+      "monthly_estimate_usd": 1450
+    },
+    "North Macedonia": {
+      "country_code": "MK",
+      "region": "Europe",
+      "monthly_estimate_usd": 1450
+    },
+    "Croatia": {
+      "country_code": "HR",
+      "region": "Europe",
+      "monthly_estimate_usd": 1500
+    },
+    "Lithuania": {
+      "country_code": "LT",
+      "region": "Europe",
+      "monthly_estimate_usd": 1550
+    },
+    "Bahrain": {
+      "country_code": "BH",
+      "region": "Middle East",
+      "monthly_estimate_usd": 1550
+    },
+    "Oman": {
+      "country_code": "OM",
+      "region": "Middle East",
+      "monthly_estimate_usd": 1550
+    },
+    "Papua New Guinea": {
+      "country_code": "PG",
+      "region": "Oceania",
+      "monthly_estimate_usd": 1550
+    },
+    "Panama": {
+      "country_code": "PA",
+      "region": "Americas",
+      "monthly_estimate_usd": 1550
+    },
+    "Taiwan": {
+      "country_code": "TW",
+      "region": "Asia",
+      "monthly_estimate_usd": 1550
+    },
+    "Saudi Arabia": {
+      "country_code": "SA",
+      "region": "Middle East",
+      "monthly_estimate_usd": 1550
+    },
+    "Czechia": {
+      "country_code": "CZ",
+      "region": "Europe",
+      "monthly_estimate_usd": 1600
+    },
+    "Jamaica": {
+      "country_code": "JM",
+      "region": "Americas",
+      "monthly_estimate_usd": 1600
+    },
+    "Chile": {
+      "country_code": "CL",
+      "region": "Americas",
+      "monthly_estimate_usd": 1650
+    },
+    "Costa Rica": {
+      "country_code": "CR",
+      "region": "Americas",
+      "monthly_estimate_usd": 1700
+    },
+    "Fiji": {
+      "country_code": "FJ",
+      "region": "Oceania",
+      "monthly_estimate_usd": 1700
+    },
+    "Latvia": {
+      "country_code": "LV",
+      "region": "Europe",
+      "monthly_estimate_usd": 1700
+    },
+    "Slovakia": {
+      "country_code": "SK",
+      "region": "Europe",
+      "monthly_estimate_usd": 1750
+    },
+    "China": {
+      "country_code": "CN",
+      "region": "Asia",
+      "monthly_estimate_usd": 1850
+    },
+    "Uruguay": {
+      "country_code": "UY",
+      "region": "Americas",
+      "monthly_estimate_usd": 1900
+    },
+    "Greece": {
+      "country_code": "GR",
+      "region": "Europe",
+      "monthly_estimate_usd": 1900
+    },
+    "Estonia": {
+      "country_code": "EE",
+      "region": "Europe",
+      "monthly_estimate_usd": 1950
+    },
+    "Kuwait": {
+      "country_code": "KW",
+      "region": "Middle East",
+      "monthly_estimate_usd": 1950
+    },
+    "Portugal": {
+      "country_code": "PT",
+      "region": "Europe",
+      "monthly_estimate_usd": 2000
+    },
+    "Slovenia": {
+      "country_code": "SI",
+      "region": "Europe",
+      "monthly_estimate_usd": 2000
+    },
+    "Trinidad and Tobago": {
+      "country_code": "TT",
+      "region": "Americas",
+      "monthly_estimate_usd": 2000
+    },
+    "Malta": {
+      "country_code": "MT",
+      "region": "Europe",
+      "monthly_estimate_usd": 2050
+    },
+    "Cyprus": {
+      "country_code": "CY",
+      "region": "Europe",
+      "monthly_estimate_usd": 2100
+    },
+    "United Arab Emirates": {
+      "country_code": "AE",
+      "region": "Middle East",
+      "monthly_estimate_usd": 2150
+    },
+    "Spain": {
+      "country_code": "ES",
+      "region": "Europe",
+      "monthly_estimate_usd": 2200
+    },
+    "Qatar": {
+      "country_code": "QA",
+      "region": "Middle East",
+      "monthly_estimate_usd": 2200
+    },
+    "Singapore": {
+      "country_code": "SG",
+      "region": "Asia",
+      "monthly_estimate_usd": 2250
+    },
+    "South Korea": {
+      "country_code": "KR",
+      "region": "Asia",
+      "monthly_estimate_usd": 2250
+    },
+    "Italy": {
+      "country_code": "IT",
+      "region": "Europe",
+      "monthly_estimate_usd": 2300
+    },
+    "Hong Kong": {
+      "country_code": "HK",
+      "region": "Asia",
+      "monthly_estimate_usd": 2350
+    },
+    "France": {
+      "country_code": "FR",
+      "region": "Europe",
+      "monthly_estimate_usd": 2450
+    },
+    "Germany": {
+      "country_code": "DE",
+      "region": "Europe",
+      "monthly_estimate_usd": 2500
+    },
+    "Austria": {
+      "country_code": "AT",
+      "region": "Europe",
+      "monthly_estimate_usd": 2650
+    },
+    "Belgium": {
+      "country_code": "BE",
+      "region": "Europe",
+      "monthly_estimate_usd": 2650
+    },
+    "Japan": {
+      "country_code": "JP",
+      "region": "Asia",
+      "monthly_estimate_usd": 2700
+    },
+    "Netherlands": {
+      "country_code": "NL",
+      "region": "Europe",
+      "monthly_estimate_usd": 2750
+    },
+    "Canada": {
+      "country_code": "CA",
+      "region": "Americas",
+      "monthly_estimate_usd": 2850
+    },
+    "United Kingdom": {
+      "country_code": "GB",
+      "region": "Europe",
+      "monthly_estimate_usd": 2900
+    },
+    "New Zealand": {
+      "country_code": "NZ",
+      "region": "Oceania",
+      "monthly_estimate_usd": 2950
+    },
+    "Finland": {
+      "country_code": "FI",
+      "region": "Europe",
+      "monthly_estimate_usd": 2950
+    },
+    "United States": {
+      "country_code": "US",
+      "region": "Americas",
+      "monthly_estimate_usd": 3000
+    },
+    "Sweden": {
+      "country_code": "SE",
+      "region": "Europe",
+      "monthly_estimate_usd": 3050
+    },
+    "Denmark": {
+      "country_code": "DK",
+      "region": "Europe",
+      "monthly_estimate_usd": 3200
+    },
+    "Australia": {
+      "country_code": "AU",
+      "region": "Oceania",
+      "monthly_estimate_usd": 3350
+    },
+    "Ireland": {
+      "country_code": "IE",
+      "region": "Europe",
+      "monthly_estimate_usd": 3350
+    },
+    "Norway": {
+      "country_code": "NO",
+      "region": "Europe",
+      "monthly_estimate_usd": 3500
+    },
+    "Luxembourg": {
+      "country_code": "LU",
+      "region": "Europe",
+      "monthly_estimate_usd": 3500
+    },
+    "Israel": {
+      "country_code": "IL",
+      "region": "Middle East",
+      "monthly_estimate_usd": 3550
+    },
+    "Iceland": {
+      "country_code": "IS",
+      "region": "Europe",
+      "monthly_estimate_usd": 3600
+    },
+    "Switzerland": {
+      "country_code": "CH",
+      "region": "Europe",
+      "monthly_estimate_usd": 4000
+    }
+  }
+}
